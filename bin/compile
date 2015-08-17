@@ -3,5 +3,8 @@
 
 BUILD_DIR=$1
 
+echo "Copying settings.py"
 cp $BUILD_DIR/deployment/heroku/settings.py $BUILD_DIR/weblate/settings.py
+
+echo "Appending Heroku specific requirements"
 cat $BUILD_DIR/deployment/heroku/requirements.txt >> $BUILD_DIR/requirements.txt
