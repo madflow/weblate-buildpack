@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-echo "--- {}"
+echo "Installing sth"
+
+ /app/.heroku/python/bin/pip install -r deployment/heroku/requirements.txt
