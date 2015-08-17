@@ -11,4 +11,4 @@ cat $BUILD_DIR/deployment/heroku/requirements.txt >> $BUILD_DIR/requirements.txt
 cat $BUILD_DIR/requirements.txt
 
 echo "Copying wsgi.py"
-cp $BUILD_DIR/deployment/heroku/wsgi.py $BUILD_DIR/weblate/wsgi.py | exit 1
+cp -f $BUILD_DIR/deployment/heroku/wsgi.py $BUILD_DIR/weblate/wsgi.py | exit 1
