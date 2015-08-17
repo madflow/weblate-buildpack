@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-pip install -r requirements-optional.txt
+BUILD_DIR=$1
+
+cp $BUILD_DIR/deployment/heroku/settings.py $BUILD_DIR/weblate/settings.py
+cat $BUILD_DIR/deployment/heroku/requirements.txt >> $BUILD_DIR/requirements.txt
