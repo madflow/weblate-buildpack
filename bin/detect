@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 # bin/detect <build-dir>
 
-echo "Null"
-exit 0
+BUILD_DIR=$1
+
+if [ ! -f $BUILD_DIR/requirements-optional.txt ] && [ ! -f $BUILD_DIR/deployment/heroku/requirements.txt ]; then
+  echo "Not Weblate"
+  exit 1
+fi
+
+echo "Let's go"
