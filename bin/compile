@@ -2,10 +2,24 @@
 # bin/compile <build-dir> <cache-dir>
 
 BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
 
-echo "Copying settings.py"
-cp $BUILD_DIR/deployment/heroku/settings.py $BUILD_DIR/weblate/settings.py | exit 1
+if [ -f $ENV_DIR/weblate/settings.py ]; then
+    echo "Copying settings.py"
+    cp $BUILD_DIR/deployment/heroku/settings.py $BUILD_DIR/weblate/settings.py | exit 1
+fi
 
 echo "Appending Heroku specific requirements"
 cat $BUILD_DIR/deployment/heroku/requirements.txt >> $BUILD_DIR/requirements.txt | exit 2
 cat $BUILD_DIR/requirements.txt
+
+if [ -d $ENV_DIR/HEROKU_DATADIR ]; then
+    echo "Data directory exists"
+else
+    echo "Creating data directory"
+    mkdir $BUILD_DIR/HEROKU_DATADIR
+    mkdir $BUILD_DIR/HEROKU_DATADIR/woosh
+    mkdir $BUILD_DIR/HEROKU_DATADIR/ssh
+    mkdir $BUILD_DIR/HEROKU_DATADIR/vcs
+fi
