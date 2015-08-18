@@ -9,3 +9,6 @@ cp $BUILD_DIR/deployment/heroku/settings.py $BUILD_DIR/weblate/settings.py | exi
 echo "Appending Heroku specific requirements"
 cat $BUILD_DIR/deployment/heroku/requirements.txt >> $BUILD_DIR/requirements.txt | exit 2
 cat $BUILD_DIR/requirements.txt
+
+mkdir data
+mkdir data/whoosh
